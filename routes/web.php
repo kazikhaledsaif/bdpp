@@ -15,12 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/front',function (){
+    return view('frontend.pages.home');
+});
+
 
 //Localization
-Route::get('locale/{locale}',function ($locale){
+Route::get('lang/{locale}',function ($locale){
    Session::put('locale',$locale);
    return redirect()->back();
-});
+})->name('lang');
 
 
 
@@ -41,6 +45,10 @@ Route::name('frontend.')
     ->group(function (){
 
     });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
