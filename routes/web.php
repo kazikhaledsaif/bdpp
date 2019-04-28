@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.pages.home');
-});
+
 
 Route::get('/front',function (){
     return view('frontend.pages.home');
@@ -34,7 +33,7 @@ Route::name('backend.')
     ->middleware('role:admin')
     ->group(function () {
 
-
+        Route::get('/', 'DashboardController@index')->name('dashboard');
 
     });
 
@@ -43,12 +42,9 @@ Route::name('backend.')
 Route::name('frontend.')
     ->namespace('Frontend')
     ->group(function (){
+        Route::get('/','IndexController@index' )->name('index');
 
     });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

@@ -99,10 +99,8 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
     @include('backend.partials.script')
 
-    @include('flashy::message')
 
-@include('sweetalert::cdn')
-@include('sweetalert::view')
+
 
 @yield('script')
 @stack('scripts')
