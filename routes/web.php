@@ -34,7 +34,7 @@ Route::name('backend.')
     ->middleware('role:admin')
     ->group(function () {
 
-
+        Route::get('/', 'DashboardController@index')->name('dashboard');
 
     });
 
@@ -43,6 +43,7 @@ Route::name('backend.')
 Route::name('frontend.')
     ->namespace('Frontend')
     ->group(function (){
+        Route::get('/','IndexController@index' )->name('index');
 
     });
 
