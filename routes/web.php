@@ -13,10 +13,10 @@
 
 Route::get('/', function () {
     return view('frontend.pages.home');
-});
+})->name('index');
 
-Route::get('/front',function (){
-    return view('frontend.pages.home');
+Route::get('/central-form',function (){
+    return view('frontend.pages.centralform');
 });
 
 
