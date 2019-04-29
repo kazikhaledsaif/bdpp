@@ -36,7 +36,7 @@
             <ul class="navbar-nav m-auto">
 
                 <li class="nav-item active">
-                    <a class="nav-link " href="{{ route('index') }}">
+                    <a class="nav-link " href="{{ route('frontend.index') }}">
                         {{ __('nav.home') }}
                     </a>
                 </li>

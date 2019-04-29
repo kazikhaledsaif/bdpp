@@ -32,7 +32,7 @@
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <label>মায়ের নাম</label>
+                    <label>মাতার নাম</label>
                     <input type="text" class="form-control" placeholder="">
                 </div>
             </div>
@@ -50,6 +50,23 @@
                     <input type="number" class="form-control"  >
                 </div>
             </div>
+
+
+            <div class="col-6">
+                <div class="form-group">
+                    <label>লিঙ্গ</label>
+                    <input type="text" class="form-control"  >
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>ই-মেইল</label>
+                    <input type="email" class="form-control"  >
+                </div>
+            </div>
+
+
+
             <div class="col-6">
                 <div class="form-group">
                     <label>বর্তমান ঠিকানা</label>
@@ -65,11 +82,30 @@
 
             <div class="col-6">
                 <div class="form-group">
-                    <label>ই-মেইল</label>
-                    <input type="email" class="form-control"  >
+                    <label>ফোন নাম্বার</label>
+                    <input type="text" class="form-control"  >
                 </div>
             </div>
             <div class="col-6">
+                <div class="form-group">
+                    <label>মোবাইল নাম্বার</label>
+                    <input type="text" class="form-control"  >
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-group">
+                    <label>পলিটেকনিক এর নাম</label>
+                    <input type="text" class="form-control"  >
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label>পাশের সাল</label>
+                    <input type="date" class="form-control" name="dob" class="datepicker">
+                </div>
+            </div>
+            <div class="col-3">
                 <div class="form-group">
                     <label>পলিটেকনিক এর ধরন</label> <br>
                     <input type="radio" class="form-check-radio"  name="politechnique" value="Govt"> সরকার
@@ -82,22 +118,38 @@
                 <label>এসএসসি</label>
                 <table class="table">
                     <tr>
-                        <th>বোর্ড এর নাম</th>
-                        <th>পাস এর বছর</th>
+                        <th> স্কুলের এর নাম</th>
+                        <th> বোর্ড এর নাম</th>
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" class="form-control "   >
+                            <input type="text" class="form-control"   >
                         </td>
                         <td>
-                            <input type="date" class="form-control "  >
+                            <input type="date" class="form-control"  >
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-6">
+
+                <table class="table">
+                    <tr>
+
+                        <th>পাশের সাল</th>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <input type="date" class="form-control"  >
                         </td>
                     </tr>
                 </table>
             </div>
 
             <div class="clearfix"></div>
-
+            <hr>
             <div class="col-6">
                 <div class="form-group">
                     <label>জেলা এর নাম</label>
