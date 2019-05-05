@@ -15,4 +15,8 @@
     <link href="{{ asset('frontend/css/blk-design-system.css?v=1.0.0') }}" rel="stylesheet" />
     <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/stylesheet.css') }}  ">
+
+
+    @yield('css')
+
 </head>

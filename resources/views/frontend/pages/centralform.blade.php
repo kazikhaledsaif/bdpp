@@ -153,10 +153,7 @@
             <div class="col-6"></div>
 
             <div class="col-12 text-center pt-2">
-
                     <button  class="btn btn-success"  >Submit</button>
-
-
             </div>
 
             </div>
