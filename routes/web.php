@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('frontend.pages.home');
 })->name('index');
 
-Route::get('/central-form',function (){
-    return view('frontend.pages.centralform');
+
+
+Route::get('/central-committee',function (){
+    return view('frontend.pages.centralCommittee');
 });
 
 
@@ -31,10 +33,16 @@ Route::get('lang/{locale}',function ($locale){
 Route::name('backend.')
     ->namespace('Backend')
     ->prefix('admin')
-    ->middleware('role:admin')
+//    ->middleware('role:admin')
     ->group(function () {
 
         Route::get('/', 'DashboardController@index')->name('dashboard');
+
+        Route::get('/designation','DesignationController@index' )->name('designation.index');
+        Route::post('/designation','DesignationController@store' )->name('designation.store');
+
+        Route::get('/central-committee','CentralCommitteeController@index' )->name('cCommittee.index');
+
 
     });
 
@@ -44,6 +52,8 @@ Route::name('frontend.')
     ->namespace('Frontend')
     ->group(function (){
         Route::get('/','IndexController@index' )->name('index');
+        Route::get('/central-form', 'CentralCommitteController@index')->name('centralCommittee');
+        Route::post('/central-form', 'CentralCommitteController@store')->name('centralCommittee.store');
 
     });
 

@@ -4768,7 +4768,7 @@ input[type="button"].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #ffffff;
+  background-color: #edebca;
   background-clip: border-box;
   border: 0.0625rem solid rgba(34, 42, 66, 0.05);
   border-radius: 0.2857rem;
@@ -5607,6 +5607,7 @@ input[type="button"].btn-block {
   padding: 1rem 1rem;
   margin-bottom: -0.0625rem;
   background-color: #ffffff;
+  color: black;
   border: 0.0625rem solid #e9ecef;
 }
 
@@ -6626,7 +6627,7 @@ a.bg-primary:hover,
 a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #d725bb !important;
+  background-color: #19d78b !important;
 }
 
 .bg-secondary {
@@ -14341,7 +14342,7 @@ textarea {
 .card h5,
 .card h6,
 .card p {
-  color: rgba(255, 255, 255, 0.8);
+  color: black!important;
 }
 
 h1,
@@ -14355,13 +14356,13 @@ h6 {
 }
 
 a {
-  color: #ba54f5;
+  color: #116304;
   font-weight: 300;
 }
 
 a:hover,
 a:focus {
-  color: #e14eca;
+  color: #009a5d;
 }
 
 h1,
@@ -14674,7 +14675,7 @@ hr {
 }
 
 .table>tbody>tr>td {
-  color: rgba(255, 255, 255, 0.7) !important;
+  /*color: rgba(255, 255, 255, 0.7) !important;*/
 }
 
 .table>tbody>tr>td .photo {

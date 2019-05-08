@@ -108,22 +108,26 @@
             <div class="col-3">
                 <div class="form-group">
                     <label>পলিটেকনিক এর ধরন</label> <br>
-                    <input type="radio" class="form-check-radio"  name="politechnique" value="Govt"> সরকার
-                    <input type="radio" class="form-check-radio"  name="politechnique" value="Private"> Private
+                    <input type="radio" class="form-check-radio"  name="politechnique" value="govt"> সরকার
+                    <input type="radio" class="form-check-radio"  name="politechnique" value="private"> বেসরকারি
                 </div>
             </div>
 
 
             <div class="col-12">
-                <label>এসএসসি</label>
+                <label class="active">এসএসসি</label>
                 <table class="table">
                     <tr>
                         <th> স্কুলের এর নাম</th>
                         <th> বোর্ড এর নাম</th>
+                        <th> পাশের সাল </th>
                     </tr>
                     <tr>
                         <td>
                             <input type="text" class="form-control"   >
+                        </td>
+                        <td>
+                            <input type="text" class="form-control"  >
                         </td>
                         <td>
                             <input type="date" class="form-control"  >
@@ -134,18 +138,6 @@
 
             <div class="col-6">
 
-                <table class="table">
-                    <tr>
-
-                        <th>পাশের সাল</th>
-                    </tr>
-                    <tr>
-
-                        <td>
-                            <input type="date" class="form-control"  >
-                        </td>
-                    </tr>
-                </table>
             </div>
 
             <div class="clearfix"></div>
@@ -193,7 +185,12 @@
                     </select>
                 </div>
             </div>
-            <div class="col-6"></div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>Use Bkash Reference  </label>
+                    <input type="text" value="{{ $reference }}" name="uniqueid" class="form-control text-white" disabled>
+                </div>
+                </div>
             <div class="clearfix"></div>
 
             <div class="col-6">

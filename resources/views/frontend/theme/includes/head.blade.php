@@ -13,6 +13,10 @@
     <link href="{{ asset('frontend/css/nucleo-icons.css') }} " rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('frontend/css/blk-design-system.css?v=1.0.0') }}" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
     <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/stylesheet.css') }}  ">
 

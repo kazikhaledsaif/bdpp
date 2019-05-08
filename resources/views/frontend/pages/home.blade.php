@@ -33,7 +33,7 @@
                 </div>
                 <div class="row pb-3">
                     <div class="col-md-5 align-content-center">
-                        <img src="{{ asset('frontend/img/bangabandhu.jpg') }} " alt="Raised circle image"
+                        <img src="{{ asset('frontend/img/bangabandhu.jpg') }}" width="160" height="120" alt="Raised circle image"
                              class="img-fluid rounded shadow-lg" style="width: 200px;">
                     </div>
 

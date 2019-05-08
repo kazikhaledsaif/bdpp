@@ -2,11 +2,12 @@
 	--menu: #f3ef85;
 	--background: #edebca;
 	--primaryColor: #307a15;
+	--hyperLink: #116304;
 }
 
 body{
 	background: #edebca;
-	color: #307a15;
+	color: #307a15!important;
 }
 
 .bg-green {
@@ -88,7 +89,7 @@ button.bg-green:focus {
 	font-size: .7em;
 }
 
-//front-page css
+/*front-page css*/
 .qoutes{
 	border-left: 5px solid #03856C!important;
 }
@@ -96,4 +97,10 @@ button.bg-green:focus {
 	border: none;
   border-left: 5px solid #03856C;
   color: black;
+}
+
+
+.card-horizontal {
+	display: flex;
+	flex: 1 1 auto;
 }
