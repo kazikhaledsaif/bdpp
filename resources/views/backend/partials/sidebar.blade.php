@@ -23,6 +23,8 @@
                 </ul>
             </li>
 
+            <li class=""><a href="{{ route('backend.member.list') }}"><i class="fa fa-anchor"></i> <span>General Member </span></a></li>
+
 
 
 

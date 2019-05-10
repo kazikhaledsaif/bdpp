@@ -14,26 +14,26 @@
 
     <h2 class="text-black">কেন্দ্রীয় কমিটি ফরম</h2>
 
-    <form action="#" method="post" style="font-size: 120%;">
+    <form action="{{ route('frontend.generalMember.store') }}" method="post" style="font-size: 120%;">
         @csrf
         <div class="row">
             <div class="col-8">
                 <div class="form-group">
                     <label>নাম</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" placeholder="" name="name">
                 </div>
             </div>
             <div class="clearfix"></div>
             <div class="col-6">
                 <div class="form-group">
                     <label>পিতার নাম</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" name="father_name">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label>মাতার নাম</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" name="mother_name">
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <label>জাতীয় পরিচয়পত্র নম্বর</label>
-                    <input type="number" class="form-control"  >
+                    <input type="text" class="form-control" name="nid" >
                 </div>
             </div>
 
@@ -55,13 +55,17 @@
             <div class="col-6">
                 <div class="form-group">
                     <label>লিঙ্গ</label>
-                    <input type="text" class="form-control"  >
+                    <select name="gender" class="form-control">
+                        <option value="পুরুষ">পুরুষ</option>
+                        <option value="মহিলা">মহিলা</option>
+                        <option value="অন্যান্য">অন্যান্য</option>
+                    </select>
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label>ই-মেইল</label>
-                    <input type="email" class="form-control"  >
+                    <input type="email" class="form-control" name="email" >
                 </div>
             </div>
 
@@ -70,46 +74,43 @@
             <div class="col-6">
                 <div class="form-group">
                     <label>বর্তমান ঠিকানা</label>
-                    <textarea class="form-control" ></textarea>
+                    <textarea class="form-control"  name="present_address"></textarea>
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label>স্থায়ী ঠিকানা</label>
-                    <textarea class="form-control" ></textarea>
+                    <textarea class="form-control" name="permanent_address" ></textarea>
                 </div>
             </div>
 
             <div class="col-6">
                 <div class="form-group">
                     <label>ফোন নাম্বার</label>
-                    <input type="text" class="form-control"  >
+                    <input type="text" class="form-control" name="phone" >
                 </div>
             </div>
             <div class="col-6">
-                <div class="form-group">
-                    <label>মোবাইল নাম্বার</label>
-                    <input type="text" class="form-control"  >
-                </div>
             </div>
+            <div class="clearfix"></div>
 
             <div class="col-6">
                 <div class="form-group">
                     <label>পলিটেকনিক এর নাম</label>
-                    <input type="text" class="form-control"  >
+                    <input type="text" class="form-control" name="inst_name" >
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
                     <label>পাশের সাল</label>
-                    <input type="date" class="form-control" name="dob" class="datepicker">
+                    <input type="date" class="form-control" name="passing_year" class="datepicker">
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
                     <label>পলিটেকনিক এর ধরন</label> <br>
-                    <input type="radio" class="form-check-radio"  name="politechnique" value="govt"> সরকার
-                    <input type="radio" class="form-check-radio"  name="politechnique" value="private"> বেসরকারি
+                    <input type="radio" class="form-check-radio"  name="inst_type" value="সরকারি"> সরকারি
+                    <input type="radio" class="form-check-radio"  name="inst_type" value="বেসরকারি"> বেসরকারি
                 </div>
             </div>
 
@@ -124,13 +125,13 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" class="form-control"   >
+                            <input type="text" class="form-control" name="ssc_school"  >
                         </td>
                         <td>
-                            <input type="text" class="form-control"  >
+                            <input type="text" class="form-control" name="ssc_board" >
                         </td>
                         <td>
-                            <input type="date" class="form-control"  >
+                            <input type="date" class="form-control" name="ssc_year" >
                         </td>
                     </tr>
                 </table>
@@ -146,7 +147,7 @@
                 <div class="form-group">
                     <label>জেলা এর নাম</label>
 
-                    <select class="form-control" name="" id="">
+                    <select class="form-control" name="district" required>
                         <option value="" disabled selected>নির্বাচন করুন</option>
                         <optgroup label="ঢাকা">
                         <option value="ঢাকা">ঢাকা</option><option value="ফরিদপুর">ফরিদপুর</option>
@@ -188,7 +189,8 @@
             <div class="col-6">
                 <div class="form-group">
                     <label>Use Bkash Reference  </label>
-                    <input type="text" value="{{ $reference }}" name="uniqueid" class="form-control text-white" disabled>
+                    <input type="text" value="{{ $reference }}" name="nosto" class="form-control text-white" disabled >
+                    <input type="hidden" value="{{ $reference }}" name="reference" >
                 </div>
                 </div>
             <div class="clearfix"></div>
@@ -196,7 +198,7 @@
             <div class="col-6">
                 <div class="form-control-file">
                     <label for="">File</label>
-                    <input type="file" class="" placeholder="photo">
+                    <input type="file" name="image" placeholder="photo" required>
                 </div>
             </div>
             <div class="col-6"></div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\CentralCommitte;
 use App\Designation;
+use App\GeneralMember;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,16 +14,22 @@ class CentralCommitteeController extends Controller
     public function index()
     {
         $designation = Designation::all();
+        $committe = CentralCommitte::all();
 
         return view('backend.pages.cCommittee')->with([
             'designation' => $designation,
+            'committee' => $committe
         ]);
     }
 
 
-    public function create()
+    public function generalCommittee()
     {
-        //
+        $committee = GeneralMember::all();
+
+        return view('backend.pages.generalMember')->with([
+            'committee' => $committee,
+        ]);
     }
 
 

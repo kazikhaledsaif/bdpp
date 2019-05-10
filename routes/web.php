@@ -43,6 +43,8 @@ Route::name('backend.')
 
         Route::get('/central-committee','CentralCommitteeController@index' )->name('cCommittee.index');
 
+        Route::get('general-member','CentralCommitteeController@generalCommittee' )->name('member.list');
+
 
     });
 
@@ -52,8 +54,8 @@ Route::name('frontend.')
     ->namespace('Frontend')
     ->group(function (){
         Route::get('/','IndexController@index' )->name('index');
-        Route::get('/central-form', 'CentralCommitteController@index')->name('centralCommittee');
-        Route::post('/central-form', 'CentralCommitteController@store')->name('centralCommittee.store');
+        Route::get('/general-form', 'CentralCommitteController@index')->name('generalMember.form');
+        Route::post('/central-form', 'GeneralMemberController@store')->name('generalMember.store');
 
     });
 

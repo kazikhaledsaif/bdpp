@@ -19,7 +19,7 @@ class CentralCommitteController extends Controller
         $id = base_convert(time(), 10, 36);
         $designation = Designation::all();
 
-        return view('frontend.pages.centralform')->with([
+        return view('frontend.pages.generalform')->with([
             'designation' => $designation,
             'reference' => $id,
         ]);

@@ -5165,14 +5165,14 @@ input[type="button"].btn-block {
 
 .badge-primary {
   color: #ffffff;
-  background-color: #e14eca;
+  background-color: #e14eca!important;
 }
 
 .badge-primary[href]:hover,
 .badge-primary[href]:focus {
   color: #ffffff;
   text-decoration: none;
-  background-color: #d725bb;
+  background-color: #d725bb!important;
 }
 
 .badge-secondary {
