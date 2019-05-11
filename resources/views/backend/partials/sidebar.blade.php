@@ -24,6 +24,19 @@
             </li>
 
 
+            <li class="treeview">
+                <a href="#"><i class="fa  fa-book"></i> <span>Notice</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ route('backend.notice.list') }}">Notice List</a></li>
+                    <li><a href="{{ route('backend.notice.add') }}">Add Notice</a></li>
+
+                </ul>
+            </li>
+
 
 
 

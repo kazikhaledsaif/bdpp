@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('frontend.pages.home');
 })->name('index');
@@ -35,6 +37,19 @@ Route::name('backend.')
     ->group(function () {
 
         Route::get('/', 'DashboardController@index')->name('dashboard');
+
+        //  notice route
+        Route::get('/notice', 'NoticeController@index')->name('notice.list');
+        Route::get('/notice-add', 'NoticeController@create')->name('notice.add');
+        Route::get('/notice-edit/{id}', 'NoticeController@show')->name('notice.edit');
+
+        // for slug generation
+        Route::get('/check_slug', 'NoticeController@check_slug')->name('notice.slug');
+
+        // notice create
+        Route::post('/notice-create', 'NoticeController@store')->name('notice.create');
+        Route::post('/notice-update', 'NoticeController@update')->name('notice.update');
+        Route::post('/notice-destroy', 'NoticeController@destroy')->name('notice.destroy');
 
     });
 
