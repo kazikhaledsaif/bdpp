@@ -21,9 +21,6 @@ class CreateCentralCommittesTable extends Migration
             $table->string('email');
             $table->text('mobile');
             $table->string('image')->default('default.jpg');
-            $table->string('payment_verified')->default('pending');
-            $table->string('trxid')->nullable();
-            $table->string('uniqueid')->nullable();
             $table->timestamps();
         });
     }

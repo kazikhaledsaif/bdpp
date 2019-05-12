@@ -3,17 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\CentralCommitte;
-use App\Designation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CentralCommitteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $id = base_convert(time(), 10, 36);

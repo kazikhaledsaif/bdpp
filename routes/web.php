@@ -49,9 +49,13 @@ Route::name('frontend.')
         Route::get('/','IndexController@index' )->name('index');
         Route::get('/general-form', 'CentralCommitteController@index')->name('generalMember.form');
         Route::post('/central-form', 'GeneralMemberController@store')->name('generalMember.store');
-        Route::get('/central-committee', 'CentralCommitteeController@centralCommittee')->name('centralCommittee.list');
+        Route::get('/central-committee', 'CentralCommitteController@centralCommittee')->name('centralCommittee.list');
 
-        Route::get('/district-committee', 'GeneralMemberController@districtCommittee')->name('districtCommittee.list');
+        Route::get('/district-committee', 'CommitteeController@districtCommittee')->name('districtCommittee.list');
+        Route::get('/district-committee/{dist}', 'CommitteeController@districtShow')->name('districtCommittee.show');
+
+        Route::get('/division-committee', 'CommitteeController@division')->name('divisionCommittee.list');
+        Route::get('/division-committee/{div}', 'CommitteeController@divisionShow')->name('divisionCommittee.show');
 
 
 

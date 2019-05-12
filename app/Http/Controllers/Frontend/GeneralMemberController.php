@@ -52,17 +52,6 @@ class GeneralMemberController extends Controller
         }
     }
 
-    public function districtCommittee() {
-        $committee = CentralCommitte::all();
-        return view('frontend.pages.districtCommittee')->with([
-            'committee' => $committee,
-        ]);
-    }
-
-    public function show($id)
-    {
-        //
-    }
 
 
     public function edit($id)

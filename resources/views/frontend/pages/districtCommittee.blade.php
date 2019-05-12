@@ -16,7 +16,7 @@
                 <a data-toggle="collapse" href="#collapseDhaka" role="button" aria-expanded="false" aria-controls="collapseDhaka"
                         class="list-group-item text-green text-center" >ঢাকা</a>
                 <div class="collapse" id="collapseDhaka">
-                    <a href="#" class="list-group-item">ঢাকা</a>
+                    <a href="{{ route('frontend.districtCommittee.show',['id' => 'dhaka']) }}" class="list-group-item">ঢাকা</a>
                     <a href="#" class="list-group-item">ফরিদপুর</a>
                     <a href="#" class="list-group-item">গোপালগঞ্জ</a>
                     <a href="#" class="list-group-item">জামালপুর</a>
