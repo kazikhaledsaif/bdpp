@@ -23,7 +23,44 @@
                 </ul>
             </li>
 
+            <li class=""><a href="{{ route('backend.member.list') }}"><i class="fa fa-anchor"></i> <span>General Member </span></a></li>
 
+            <li class="treeview">
+                <a href="#"><i class="fa  fa-book"></i> <span>Central Committee</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ route('backend.central-committee.list') }}">Central Committee List</a></li>
+                    <li><a href="{{ route('backend.central-committee.add') }}">Add Central Committee</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa  fa-book"></i> <span>District Committee</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ route('backend.district-committee.list') }}">District Committee List</a></li>
+                    <li><a href="{{ route('backend.district-committee.add') }}">Add District Committee</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa  fa-book"></i> <span>Departmental Committee</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ route('backend.department-committee.list') }}">Departmental Committee List</a></li>
+                    <li><a href="{{ route('backend.department-committee.add') }}">Add Departmental Committee</a></li>
+
+                </ul>
+            </li>
             <li class="treeview">
                 <a href="#"><i class="fa  fa-book"></i> <span>Notice</span>
                     <span class="pull-right-container">

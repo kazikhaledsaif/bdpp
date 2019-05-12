@@ -19,7 +19,7 @@ class NoticeController extends Controller
     {
 
 
-        $notice_list = Notice::all('id','title','slug','description','file','created_at','updated_at');
+        $notice_list = Notice::all();
 
         return view('backend.pages.notice.list')->with([
                 'notices' => $notice_list
@@ -120,8 +120,6 @@ class NoticeController extends Controller
 
         if($request->noticeFile){
             $noticefile_upload = $request->file('noticeFile');
-            $file_name =
-                uniqid('thumb_',true).str_random(5).'.'.$noticefile_upload->getClientOriginalExtension();
 
             if (isset($noticefile_upload)) {
                 if ($noticefile_upload->isValid()) {
@@ -135,11 +133,6 @@ class NoticeController extends Controller
 
             $notice->file = $noticeFile;
         }
-
-
-
-
-
 
         $notice->save();
         return redirect()->route('backend.notice.list');
@@ -156,8 +149,6 @@ class NoticeController extends Controller
     {
         //
         Notice::find($id)->delete();
-
-
         return redirect()->route('backend.notice.list');
     }
 }

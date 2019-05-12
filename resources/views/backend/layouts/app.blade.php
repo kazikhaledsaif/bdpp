@@ -101,6 +101,8 @@ desired effect
 
 
 
+@include('sweetalert::cdn')
+@include('sweetalert::view')
 
 @yield('script')
 @stack('scripts')
