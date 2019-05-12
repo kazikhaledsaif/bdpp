@@ -17,24 +17,22 @@ class CentralCommitteController extends Controller
     public function index()
     {
         $id = base_convert(time(), 10, 36);
-        $designation = Designation::all();
 
         return view('frontend.pages.generalform')->with([
-            'designation' => $designation,
             'reference' => $id,
         ]);
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+    public function centralCommittee() {
+        $committee = CentralCommitte::all();
+        return view('frontend.pages.centralCommittee')->with([
+            'committee' => $committee,
+        ]);
     }
+
+
 
 
     public function store(Request $request) {

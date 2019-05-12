@@ -1,15 +1,13 @@
 
-<nav class="navbar-default bg-menu" role="navigation">
+<nav class="navbar-default bg-menu-image" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <img class="img-responsive" src="{{ asset('frontend/img/bango.png') }} ">
         </div>
-        <!--/.navbar-header-->
-        <!--/.navbar-collapse-->
     </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg  bg-menu ">
+<nav class="navbar navbar-expand-lg  bg-menu  nav-shadow">
     <div class="container ">
         <div class="navbar-translate text-black">
             <a class="navbar-brand" href="../bdpp/"   data-placement="bottom" >
@@ -41,7 +39,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="">
+                    <a class="nav-link " href="{{ route('frontend.centralCommittee.list') }}">
                         {{ __('nav.central') }}
                     </a>
                 </li>
@@ -55,8 +53,9 @@
                         {{ __('nav.division') }}
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link  " href="#">
+                    <a class="nav-link  " href="{{ route('frontend.generalMember.form') }}">
                         {{ __('nav.form') }}
                     </a>
                 </li>
@@ -77,7 +76,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="nav-link dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}

@@ -15,13 +15,6 @@ Route::get('/', function () {
     return view('frontend.pages.home');
 })->name('index');
 
-
-
-Route::get('/central-committee',function (){
-    return view('frontend.pages.centralCommittee');
-});
-
-
 //Localization
 Route::get('lang/{locale}',function ($locale){
    Session::put('locale',$locale);
@@ -56,6 +49,11 @@ Route::name('frontend.')
         Route::get('/','IndexController@index' )->name('index');
         Route::get('/general-form', 'CentralCommitteController@index')->name('generalMember.form');
         Route::post('/central-form', 'GeneralMemberController@store')->name('generalMember.store');
+        Route::get('/central-committee', 'CentralCommitteeController@centralCommittee')->name('centralCommittee.list');
+
+        Route::get('/district-committee', 'GeneralMemberController@districtCommittee')->name('districtCommittee.list');
+
+
 
     });
 

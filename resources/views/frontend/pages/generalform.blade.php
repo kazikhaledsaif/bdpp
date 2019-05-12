@@ -197,11 +197,34 @@
 
             <div class="col-6">
                 <div class="form-control-file">
-                    <label for="">File</label>
-                    <input type="file" name="image" placeholder="photo" required>
+                    <label for="">Image</label>
+                    <input type="file" name="image" id="imgInp" class="img-rounded form-control form-file" placeholder="photo" required>
                 </div>
             </div>
-            <div class="col-6"></div>
+            <div class="col-6">
+                <div class="form-control-file">
+                    <img id="blah" src="#" alt="No Image selected" width=120 height=120 /> <br>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-control-file">
+                    <label for="">Signature Form</label>
+                    <input type="file" name="signature_form" class="form-control form-file" placeholder="Signature Form" required>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-control-file">
+                    <label for="">NID / Birth Certificate</label>
+                    <input type="file" name="nid_certificate" class="form-control form-file" placeholder="NID / Birth Certificate" required>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-control-file">
+                    <label for="">Diploma Certificate</label>
+                    <input type="file" name="ssc_certificate" class="form-control form-file" placeholder="Diploma Certificate" required>
+                </div>
+            </div>
 
             <div class="col-12 text-center pt-2">
                     <button  class="btn btn-success"  >Submit</button>
@@ -222,7 +245,21 @@
 @endsection
 
 @push('script')
-    <script>
-        moment().format();
+        <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function() {
+            readURL(this);
+        });
     </script>
 @endpush

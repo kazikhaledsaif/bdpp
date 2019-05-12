@@ -16233,18 +16233,16 @@ textarea.form-control {
   max-height: 80px;
   padding: 10px 10px 0 0;
   resize: none;
-  border: none;
-  border-bottom: 1px solid #2b3553;
-  border-left: 1px solid #2b3553;
-  border-radius: 0;
+
+  border: 1px solid #2b3553;
+  border-radius: 5px;
   line-height: 2;
 }
 
 textarea.form-control:focus,
 textarea.form-control:active {
 
-  border-top: none;
-  border-right: none;
+
 }
 
 .has-success.form-group .form-control,
