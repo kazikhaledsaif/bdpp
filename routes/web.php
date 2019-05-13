@@ -58,6 +58,7 @@ Route::name('frontend.')
         Route::get('/division-committee/{div}', 'CommitteeController@divisionShow')->name('divisionCommittee.show');
 
 
+        Route::get('/dashboard',  'IndexController@dashboard')->name('dashboard');
 
     });
 

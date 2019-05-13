@@ -120,3 +120,12 @@ button.bg-green:focus {
 .district-container{
 	padding: 0 100px;
 }
+
+/*dashboard sidebar*/
+.sidebar{
+	border-left: 4px solid #03856C;
+}
+a.sidebar-link{
+	display: block;
+	padding: 5px;
+}
