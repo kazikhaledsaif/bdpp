@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\CentralCommitte;
 use App\GeneralMember;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,7 +12,13 @@ class GeneralMemberController extends Controller
 
     public function index()
     {
-        //
+        $id = base_convert(time(), 10, 36);
+
+
+
+        return view('frontend.pages.generalform')->with([
+            'reference' => $id,
+        ]);
     }
 
 
@@ -23,8 +30,67 @@ class GeneralMemberController extends Controller
 
     public function store(Request $request)
     {
-        $new = new GeneralMember();
+        //image
+        $photo = null;
+        $photo_upload = $request->file('image');
+
+        if (isset($photo_upload)) {
+            if ($photo_upload->isValid()) {
+                $uniqid = "member_image".auth()->user()->id."-";
+                    $file_name =
+                        uniqid($uniqid, true) . str_random(5) . '.' . $photo_upload->getClientOriginalExtension();
+                $photo = $photo_upload->storeAs('files', $file_name);
+            }
+        }
+
+
+        //signature
+        $signature = null;
+        $signature_upload = $request->file('signature_form');
+
+        if (isset($signature_upload)) {
+            if ($signature_upload->isValid()) {
+                $uniqid = "member_signature".auth()->user()->id."-";
+                $file_name =
+                    uniqid($uniqid, true) . str_random(5) . '.' . $signature_upload->getClientOriginalExtension();
+                $signature = $signature_upload->storeAs('files', $file_name);
+            }
+        }
+
+
+        //birth
+        $birth = null;
+        $birth_upload = $request->file('nid_certificate');
+
+        if (isset($birth_upload)) {
+            if ($birth_upload->isValid()) {
+                $uniqid = "member_birthcft-".auth()->user()->id."-";
+                $file_name =
+                    uniqid($uniqid, true) . str_random(5) . '.' . $birth_upload->getClientOriginalExtension();
+                $birth = $birth_upload->storeAs('files', $file_name);
+            }
+        }
+        //diploma
+        $diploma  = null;
+        $diploma_upload = $request->file('ssc_certificate');
+
+        if (isset($diploma_upload)) {
+            if ($diploma_upload->isValid()) {
+                $uniqid = "member_diplomacft-".auth()->user()->id."-";
+                $file_name =
+                    uniqid($uniqid, true) . str_random(5) . '.' . $diploma_upload->getClientOriginalExtension();
+                $diploma = $diploma_upload->storeAs('files', $file_name);
+            }
+        }
+
+
+
+
+
+
+            $new = new GeneralMember();
         $new->name = $request->name;
+        $new->userId = $request->userId;
         $new->father_name = $request->father_name;
         $new->mother_name = $request->mother_name;
         $new->dob = $request->dob;
@@ -42,20 +108,19 @@ class GeneralMemberController extends Controller
         $new->ssc_passing_year = $request->ssc_year;
         $new->district = $request->district;
         $new->reference = $request->reference;
-        $new->image = $request->image;
+        $new->payment_txid = $request->bkashTxId;
+        $new->image =$photo;
+        $new->signature =$signature;
+        $new->diplomacert =$birth;
+        $new->birthcert =$diploma;
 
         if ($new->save()) {
-            return redirect('index');
+            return redirect()->route('home');
         } else {
             return back();
         }
     }
 
-
-    public function show($id)
-    {
-        //
-    }
 
 
     public function edit($id)

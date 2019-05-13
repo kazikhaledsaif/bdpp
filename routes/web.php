@@ -11,21 +11,9 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.pages.home');
-})->name('index');
-
-
-
-Route::get('/central-committee',function (){
-    return view('frontend.pages.centralCommittee');
-});
-
-Route::get('/central-form',function (){
-    return view('frontend.pages.centralform');
-});
 
 
 
@@ -34,7 +22,6 @@ Route::get('lang/{locale}',function ($locale){
    Session::put('locale',$locale);
    return redirect()->back();
 })->name('lang');
-
 
 
 Route::name('backend.')
@@ -88,10 +75,8 @@ Route::name('backend.')
         Route::get('/notice', 'NoticeController@index')->name('notice.list');
         Route::get('/notice-add', 'NoticeController@create')->name('notice.add');
         Route::get('/notice-edit/{id}', 'NoticeController@show')->name('notice.edit');
-
         // for slug generation
         Route::get('/check_slug', 'NoticeController@check_slug')->name('notice.slug');
-
         // notice create
         Route::post('/notice-create', 'NoticeController@store')->name('notice.create');
         Route::post('/notice-update', 'NoticeController@update')->name('notice.update');
@@ -104,15 +89,25 @@ Route::name('backend.')
 Route::name('frontend.')
     ->namespace('Frontend')
     ->group(function (){
+
         Route::get('/','IndexController@index' )->name('index');
-        Route::get('/general-form', 'CentralCommitteController@index')->name('generalMember.form');
+
+       // Route::get('/general-form', 'CentralCommitteController@index')->name('generalMember.form');
+      //  Route::post('/central-form', 'GeneralMemberController@store')->name('generalMember.store');
+        Route::get('/central-committee', 'CentralCommitteController@centralCommittee')->name('centralCommittee.list');
+
+        Route::get('/district-committee', 'CommitteeController@districtCommittee')->name('districtCommittee.list');
+        Route::get('/district-committee/{dist}', 'CommitteeController@districtShow')->name('districtCommittee.show');
+
+        Route::get('/division-committee', 'CommitteeController@division')->name('divisionCommittee.list');
+        Route::get('/division-committee/{div}', 'CommitteeController@divisionShow')->name('divisionCommittee.show');
+
+
+        Route::get('/general-form', 'GeneralMemberController@index')->name('generalMember.form');
         Route::post('/general-form', 'GeneralMemberController@store')->name('generalMember.store');
 
+
     });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
