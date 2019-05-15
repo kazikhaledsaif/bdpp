@@ -16,11 +16,11 @@ class CreateCentralCommittesTable extends Migration
         Schema::create('central_committes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('name');
-            $table->text('sub_title');
-            $table->integer('title');
-            $table->string('email');
-            $table->text('mobile');
-            $table->string('image')->default('default.jpg');
+            $table->integer('designation');
+            $table->text('details')->nullable();
+            $table->string('email')->nullable();
+            $table->text('mobile')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

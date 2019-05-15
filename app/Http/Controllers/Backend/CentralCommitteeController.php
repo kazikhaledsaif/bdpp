@@ -7,51 +7,67 @@ use App\Designation;
 use App\GeneralMember;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CentralCommitteeController extends Controller
 {
 
     public function index()
     {
-        $designation = Designation::all();
+       // $designation = Designation::all();
         $committe = CentralCommitte::all();
 
-        return view('backend.pages.cCommittee')->with([
-            'designation' => $designation,
-            'committee' => $committe
+        return view('backend.pages.central.list')->with([
+            'committees' => $committe
         ]);
     }
 
 
-    public function generalCommittee()
+    public function create()
     {
-        $committee = GeneralMember::all();
-
-        return view('backend.pages.generalMember')->with([
-            'committee' => $committee,
+        $designation = Designation::all();
+        return view('backend.pages.central.add')->with([
+            'designations' =>    $designation
         ]);
     }
 
 
     public function store(Request $request) {
 
+         $centralPhoto = null;
+        $centralPhoto_upload = $request->file('centralPhoto');
+
+        if (isset($centralPhoto_upload)) {
+            if ($centralPhoto_upload->isValid()) {
+                $file_name =
+                    uniqid('central_committee_', true) . str_random(5) . '.' . $centralPhoto_upload->getClientOriginalExtension();
+                $centralPhoto = $centralPhoto_upload->storeAs('central-committee', $file_name);
+            }
+
+        }
+
+
         $user = new CentralCommitte();
-        $user->name = $request->name;
-        $user->sub_title = $request->sub_title;
-        $user->title = $request->title;
-        $user->email = $request->email;
-        $user->mobile = $request->mobile;
-        $user->uniqueid = $request->uniqueid;
+        $user->name = $request->centralName;
+        $user->designation = $request->centralDesignation;
+        $user->details = $request->centralDetails;
+        $user->email = $request->centralEmail;
+        $user->mobile = $request->centralMobile;
+        $user->image = $centralPhoto;
 
         $user->save();
 
-        return back();
+        return redirect()->route('backend.central-committee.list');
     }
 
 
     public function show($id)
     {
         //
+        $central = CentralCommitte::where('id',$id)->firstOrFail();
+        return view('backend.pages.central.edit')->with([
+            'central' => $central
+        ]);
     }
 
 
@@ -61,14 +77,44 @@ class CentralCommitteeController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+
+        $user = CentralCommitte::find($request->id);
+        $user->name = $request->centralName;
+        $user->designation = $request->centralDesignation;
+        $user->details = $request->centralDetails;
+        $user->email = $request->centralEmail;
+        $user->mobile = $request->centralMobile;
+
+        if($request->centralPhoto){
+
+            $file_upload = $request->file('centralPhoto');
+
+            if (isset($file_upload)) {
+                if ($file_upload->isValid()) {
+                    $file_name =
+                        uniqid('central_committee_', true) . str_random(5) . '.' . $file_upload->getClientOriginalExtension();
+                    $file = $file_upload->storeAs('central-committee', $file_name);
+                }
+
+            }
+            Storage::delete( $user->photo );
+
+            $user->image = $file;
+        }
+
+        $user->save();
+        return redirect()->route('backend.central-committee.list');
+
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+
+        CentralCommitte::find($request->id)->delete();
+        return redirect()->route('backend.central-committee.list');
     }
 }

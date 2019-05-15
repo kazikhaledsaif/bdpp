@@ -11,11 +11,7 @@ class CentralCommitteController extends Controller
 
     public function index()
     {
-        $id = base_convert(time(), 10, 36);
 
-        return view('frontend.pages.generalform')->with([
-            'reference' => $id,
-        ]);
 
     }
 
