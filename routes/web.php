@@ -67,8 +67,16 @@ Route::name('backend.')
 
 
 
-        Route::get('/general-member','CentralCommitteeController@generalCommittee' )->name('member.list');
+        //Genereal member
+        Route::get('/general-member','GeneralMemberController@index' )->name('general-member.list');
+        Route::get('/general-member-edit/{id}', 'GeneralMemberController@show')->name('general-member.edit');
+        Route::post('/general-member-create', 'GeneralMemberController@store')->name('general-member.create');
+        Route::post('/general-member-update', 'GeneralMemberController@update')->name('general-member.update');
+        Route::post('/general-member-destroy', 'GeneralMemberController@destroy')->name('general-member.destroy');
 
+        //user
+        Route::get('/users', 'DashboardController@userList')->name('user.list');
+        Route::get('/users/{id}', 'DashboardController@userShow')->name('user.show');
 
 
         //  notice route

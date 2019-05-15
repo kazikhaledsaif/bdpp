@@ -23,7 +23,10 @@
                 </ul>
             </li>
 
-            <li class=""><a href="{{ route('backend.member.list') }}"><i class="fa fa-anchor"></i> <span>General Member </span></a></li>
+
+
+
+            <li class=""><a href="{{ route('backend.general-member.list') }}"><i class="fa fa-anchor"></i> <span>General Member</span></a></li>
             <li class=""><a href="{{ route('backend.designation.index') }}"><i class="fa fa-anchor"></i> <span>Designation</span></a></li>
 
             <li class="treeview">
@@ -79,7 +82,7 @@
 
 
 
-            <li class=""><a href=""><i class="fa fa-android"></i> <span>User</span></a></li>
+            <li class=""><a href="{{ route('backend.user.list') }}"><i class="fa fa-android"></i> <span>User</span></a></li>
 
 
         </ul>

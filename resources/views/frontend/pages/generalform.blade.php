@@ -227,7 +227,7 @@
                     <input type="hidden" value="{{ $reference. Auth::user()->id }}" name="reference" >
                     <input type="hidden" value="{{  Auth::user()->id }}" name="userId" >
                 </div>
-                </div>
+            </div>
             <div class="col-6">
                 <div class="form-group">
                     <label>Bkash Transaction Id</label>

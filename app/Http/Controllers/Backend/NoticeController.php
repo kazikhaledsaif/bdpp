@@ -126,12 +126,13 @@ class NoticeController extends Controller
                     $file_name =
                         uniqid('notice_', true) . str_random(5) . '.' . $noticefile_upload->getClientOriginalExtension();
                     $noticeFile = $noticefile_upload->storeAs('notice', $file_name);
+                    $notice->file = $noticeFile;
                 }
 
             }
             Storage::delete( $notice->file);
 
-            $notice->file = $noticeFile;
+
         }
 
         $notice->save();

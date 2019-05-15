@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -82,4 +83,21 @@ class DashboardController extends Controller
     {
         //
     }
+    public function userShow($id) {
+
+        $user = User::find($id);
+        $role= $user->removeRole('user');
+        $role1= $user->assignRole('admin');
+        return redirect()->route('backend.user.list');
+
+    }
+    public function userList(){
+
+        $user = User::all();
+
+        return view('backend.pages.user')->with([
+            'user' => $user
+        ]);
+    }
+
 }

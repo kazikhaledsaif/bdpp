@@ -1,6 +1,5 @@
 @extends('backend.layouts.app')
-@section('title' , 'Central Committee List')
-
+@section('title' , 'General Member List')
 @push('top_scripts')
     <!-- all your includes for Jquery, Bootstrap (optionally), Datatables above -->
 
@@ -22,14 +21,11 @@
                 filterDropDown: {
                     columns: [
                         {
-                            idx: 2,
-                            title: "District",
+                            idx: 5,
+                            title: "Payment status",
 
-                        },
-                        {
-                            idx: 3,
-                            title: "Designation"
                         }
+
                     ],
                     bootstrap: true
                 }
@@ -43,57 +39,57 @@
     <div class="box">
         <div class="box-header">
             <div class="col-md-3">
-                <h3 class="box-title">District Committee List</h3>
+                <h3 class="box-title">General Member list</h3>
             </div>
-
+{{--
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Add District Committee</a>
-            </div>
+                <a href="#" class="btn btn-success">Add Notice</a>
+            </div>--}}
         </div>
         <!-- /.box-header -->
-        <div class="box-body ">
-            <table id="product-list" class=" table table-bordered table-striped table-responsive table-hover dataTable" >
+        <div class="box-body">
+            <table id="product-list" class="table table-bordered table-striped table-responsive table-hover" >
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Name</th>
-                    <th>District</th>
-                    <th>Designation</th>
-                    <th>Details</th>
                     <th>Email</th>
-                    <th>Mobile</th>
-                    <th>Image</th>
+
+                    <th>Reference</th>
+                    <th>Transaction ID</th>
+                    <th>Payment status</th>
                     <th>Date</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($committees  as $committee )
+                @foreach($members  as $member )
                 <tr>
-                    <td>{{ $committee->id }}</td>
+                    <td>{{ $member->id }}</td>
 
-                    <td>{{ $committee->name }}</td>
-                    <td>{{ $committee->district }}</td>
+                    <td>{{ $member->name }}</td>
+                    <td>{{ $member->email }}</td>
 
-                    <td>{{ $committee->designation }}</td>
+                    <td>{{ $member->reference }}</td>
+                    <td>{{ $member->payment_txid }}</td>
 
-                    <td>{{ $committee->details }}  </td>
-                    <td>{{ $committee->email }}</td>
-                    <td>{{ $committee->mobile }}</td>
+                        @if($member['payment_status'] == 'pending')
+                            <td class="badge badge-primary">{{ $member->payment_status }}</td>
+                        @elseif($member['payment_status'] == 'successful')
+                            <td class="badge badge-success">{{ $member->payment_status }}</td>
+                        @elseif($member['payment_status'] == 'canceled')
+                            <td class="badge badge-danger">{{ $member->payment_status }}</td>
+                        @endif
+
+                    <td>{{ date("d-m-Y", strtotime( $member->created_at))}}</td>
+
                     <td>
-                        <img src="{{ asset("uploads/".$committee->image)  }}" alt="" width="100px" height="100px">
-
-                     </td>
-
-                    <td>{{ date("d-m-Y", strtotime( $committee->created_at))}}</td>
-
-                    <td>
-                  {{--      <a href="{{ route('frontend.notice.show',['id'=> $notice->slug]) }}">
+                  {{--      <a href="{{ route('frontend.notice.show',['id'=> $member->slug]) }}">
                             <i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> --}}&nbsp;
-                        <a href="{{ route('backend.district-committee.edit',['id'=> $committee->id]) }}">
+                        <a href="{{ route('backend.general-member.edit',['id'=> $member->id]) }}">
                             <i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;
-                        <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $committee->id }}"
-                            data-name="{{ $committee->name }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>
+                        <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $member->id }}"
+                            data-name="{{ $member->name }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>
                     </td>
 
                 </tr>
@@ -102,16 +98,14 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Name</th>
-                    <th>District</th>
-                    <th>Designation</th>
-                    <th>Details</th>
                     <th>Email</th>
-                    <th>Mobile</th>
-                    <th>Image</th>
-                    <th>Date</th>
+                    <th>Payment status</th>
+                    <th>Reference</th>
+                    <th>Transaction ID</th>
                     <th>Action</th>
+                </tr>
                 </tfoot>
             </table>
         </div>
@@ -151,7 +145,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.central-committee.destroy') }}",
+                        url: "{{ route('backend.notice.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
                             if(data.success === true){ // if true (1)
@@ -175,6 +169,4 @@
 
     </script>
     <script src="{{asset('backend/plugins/filter/filterDropDown.min.js') }}"></script>
-
-
 @endpush
