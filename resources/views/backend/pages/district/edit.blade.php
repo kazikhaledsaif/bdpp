@@ -85,7 +85,14 @@
                                 <label for="inputTitle" class="col-sm-2 control-label">Designation</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text"  value=" {{ $district->designation }} " class="form-control" id="inputTitle" name="districtDesignation" placeholder="Designation" required>
+
+
+
+                                    <select  name="districtDesignation" class="form-control" id="desig" required >
+                                        @foreach($designations as $d)
+                                            <option value="{{ $d['id'] }}">{{ $d['title'] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -148,6 +155,7 @@
 @section('script')
     <script>
 
+        $("#desig").val({{$district->designation_id}});
 
         $(document).ready(function() {
             const genderOldValue = '{{ $district->district }}';

@@ -65,13 +65,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('backend.designation.store') }}" method="POST">
+                <form   accept-charset="UTF-8" action="{{ route('backend.designation.store') }}" method="POST">
 
                     <div class="modal-body mx-3">
                         @csrf
                         <div class="md-form mb-5">
                             <label data-error="wrong" data-success="right" for="defaultForm-email">Designation Name</label>
-                            <input type="text" id="defaultForm-email" class="form-control validate" name="title" required>
+                            <input type="text" id="defaultForm-email" class="form-control" name="title" required>
                         </div>
 
                     </div>
@@ -110,7 +110,7 @@
             e.preventDefault();
             var id = $(this).data('id');
             var token = $(this).data('token');
-            var name = $(this).data('name');
+
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -123,13 +123,13 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.notice.destroy') }}",
+                        url: "{{route('backend.designation.destroy')}}",
                         data: {id:id, _token:token},
                         success: function (data) {
                             if(data.success === true){ // if true (1)
                                 setTimeout(function(){  // wait for 5 secs(2)
                                     location.reload();  // then reload the page.(3)
-                                }, 500);
+                                }, 100);
                             }
                         }
                     });
@@ -142,6 +142,10 @@
                 }
             });
 
+        });
+
+        $(document).ajaxStop(function(){
+            window.location.reload();
         });
 
 

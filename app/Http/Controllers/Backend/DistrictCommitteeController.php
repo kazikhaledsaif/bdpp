@@ -68,7 +68,7 @@ class DistrictCommitteeController extends Controller
         $user = new DistrictCommittee();
         $user->name = $request->districtName;
         $user->district = $request->district;
-        $user->designation = $request->districtDesignation;
+        $user->designation_id = $request->districtDesignation;
         $user->details = $request->districtDetails;
         $user->email = $request->districtEmail;
         $user->mobile = $request->districtMobile;
@@ -88,9 +88,11 @@ class DistrictCommitteeController extends Controller
     public function show($id)
     {
         //
+        $designation = Designation::all();
         $district = DistrictCommittee::where('id',$id)->firstOrFail();
         return view('backend.pages.district.edit')->with([
-            'district' => $district
+            'district' => $district,
+            'designations' =>    $designation
         ]);
     }
 
@@ -119,7 +121,7 @@ class DistrictCommitteeController extends Controller
         $user = DistrictCommittee::find($request->id);
         $user->name = $request->districtName;
         $user->district = $request->district;
-        $user->designation = $request->districtDesignation;
+        $user->designation_id = $request->districtDesignation;
         $user->details = $request->districtDetails;
         $user->email = $request->districtEmail;
         $user->mobile = $request->districtMobile;
@@ -148,15 +150,15 @@ class DistrictCommitteeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
 
 
-        DistrictCommittee::find($id)->delete();
+        DistrictCommittee::find($request->id)->delete();
         return redirect()->route('backend.district-committee.list');
     }
 }

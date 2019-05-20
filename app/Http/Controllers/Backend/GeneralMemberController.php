@@ -9,6 +9,26 @@ use Illuminate\Support\Facades\Storage;
 
 class GeneralMemberController extends Controller
 {
+
+    public function successful($id)
+    {
+        $new = GeneralMember::find($id);
+        $new->payment_status = "successful";
+
+        $new->save();
+
+        return redirect()->route('backend.general-member.list');
+    }
+
+    public function canceled($id)
+    {
+        $new = GeneralMember::find($id);
+        $new->payment_status = "canceled";
+
+        $new->save();
+
+        return redirect()->route('backend.general-member.list');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -84,11 +104,6 @@ class GeneralMemberController extends Controller
     public function update(Request $request)
     {
         $new = GeneralMember::find($request->id);
-
-
-
-
-
 
 
 
@@ -189,13 +204,13 @@ class GeneralMemberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
-        GeneralMember::find($id)->delete();
+        GeneralMember::find($request->id)->delete();
         return redirect()->route('backend.general-member.list');
     }
 }

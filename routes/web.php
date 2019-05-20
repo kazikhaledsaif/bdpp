@@ -34,6 +34,9 @@ Route::name('backend.')
 
         Route::get('/designation','DesignationController@index' )->name('designation.index');
         Route::post('/designation','DesignationController@store' )->name('designation.store');
+        Route::post('/designation-destroy', 'DesignationController@destroy')->name('designation.destroy');
+
+
 
 
         //central committee
@@ -65,7 +68,8 @@ Route::name('backend.')
 
 
 
-
+        Route::get('/users', 'DashboardController@userList')->name('user.list');
+        Route::get('/users/{id}', 'DashboardController@userShow')->name('user.show');
 
         //Genereal member
         Route::get('/general-member','GeneralMemberController@index' )->name('general-member.list');
@@ -74,10 +78,9 @@ Route::name('backend.')
         Route::post('/general-member-update', 'GeneralMemberController@update')->name('general-member.update');
         Route::post('/general-member-destroy', 'GeneralMemberController@destroy')->name('general-member.destroy');
 
-        //user
-        Route::get('/users', 'DashboardController@userList')->name('user.list');
-        Route::get('/users/{id}', 'DashboardController@userShow')->name('user.show');
 
+        Route::get('/general-member-successful/{id}', 'GeneralMemberController@successful')->name('general-member.successful');
+        Route::get('/general-member-canceled/{id}', 'GeneralMemberController@canceled')->name('general-member.canceled');
 
         //  notice route
         Route::get('/notice', 'NoticeController@index')->name('notice.list');
@@ -102,18 +105,20 @@ Route::name('frontend.')
 
        // Route::get('/general-form', 'CentralCommitteController@index')->name('generalMember.form');
       //  Route::post('/central-form', 'GeneralMemberController@store')->name('generalMember.store');
-        Route::get('/central-committee', 'CentralCommitteController@centralCommittee')->name('centralCommittee.list');
+        Route::get('/central-committee', 'CommitteeController@centralCommittee')->name('centralCommittee.list');
 
         Route::get('/district-committee', 'CommitteeController@districtCommittee')->name('districtCommittee.list');
         Route::get('/district-committee/{dist}', 'CommitteeController@districtShow')->name('districtCommittee.show');
 
-        Route::get('/division-committee', 'CommitteeController@division')->name('divisionCommittee.list');
-        Route::get('/division-committee/{div}', 'CommitteeController@divisionShow')->name('divisionCommittee.show');
+
+        Route::get('/department-committee/{dpt}', 'CommitteeController@departmentShow')->name('departmentCommittee.show');
 
 
         Route::get('/general-form', 'GeneralMemberController@index')->name('generalMember.form');
         Route::post('/general-form', 'GeneralMemberController@store')->name('generalMember.store');
 
+
+        Route::get('/dashboard', 'IndexController@dashboard')->name('dashboard');
 
     });
 

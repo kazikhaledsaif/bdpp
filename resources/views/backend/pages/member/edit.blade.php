@@ -98,7 +98,7 @@
                                 <label for="inputTitle" class="col-sm-2 control-label">Email</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" value="{{ $member->email }}" class="form-control" id="inputTitle" name="email" required>
+                                    <input type="text" value="{{ $member->email }}" class="form-control" id="inputTitle" name="email" readonly>
                                 </div>
                             </div>
 
@@ -255,7 +255,7 @@
      <div class="col-6">
          <div class="form-control-file">
              <label for="">Image</label>
-             <input type="file" name="image" id="imgInp" class="img-rounded form-control form-file" placeholder="photo" required>
+             <input type="file" name="image" id="imgInp" class="img-rounded form-control form-file" placeholder="photo" >
          </div>
      </div>
      <div class="col-6">
@@ -266,7 +266,7 @@
      <div class="col-6">
          <div class="form-control-file">
              <label for="">Signature Form</label>
-             <input type="file" name="signature_form" class="form-control form-file" placeholder="Signature Form" required>
+             <input type="file" name="signature_form" class="form-control form-file" placeholder="Signature Form" >
          </div>
      </div>
      <div class="col-6">
@@ -277,7 +277,7 @@
      <div class="col-6">
          <div class="form-control-file">
              <label for="">NID / Birth Certificate</label>
-             <input type="file" name="nid_certificate" class="form-control form-file" placeholder="NID / Birth Certificate" required>
+             <input type="file" name="nid_certificate" class="form-control form-file" placeholder="NID / Birth Certificate" >
          </div>
      </div>
      <div class="col-6">
@@ -288,7 +288,7 @@
      <div class="col-6">
          <div class="form-control-file">
              <label for="">Diploma Certificate</label>
-             <input type="file" name="ssc_certificate" class="form-control form-file" placeholder="Diploma Certificate" required>
+             <input type="file" name="ssc_certificate" class="form-control form-file" placeholder="Diploma Certificate" >
          </div>
      </div>
      <div class="col-6">

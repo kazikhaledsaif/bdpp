@@ -62,7 +62,7 @@ class DepartmentCommitteeController extends Controller
 
         $user = new DepartmentCommittee();
         $user->name = $request->centralName;
-        $user->designation = $request->centralDesignation;
+        $user->designation_id = $request->centralDesignation;
         $user->department = $request->department;
         $user->details = $request->centralDetails;
         $user->email = $request->centralEmail;
@@ -83,9 +83,11 @@ class DepartmentCommitteeController extends Controller
     public function show($id)
     {
         //
+        $designation = Designation::all();
         $central = DepartmentCommittee::where('id',$id)->firstOrFail();
         return view('backend.pages.department.edit')->with([
-            'central' => $central
+            'central' => $central,
+            'designations' =>    $designation
         ]);
     }
 
@@ -113,7 +115,7 @@ class DepartmentCommitteeController extends Controller
         $user = DepartmentCommittee::find($request->id);
         $user->name = $request->centralName;
         $user->department = $request->department;
-        $user->designation = $request->centralDesignation;
+        $user->designation_id = $request->centralDesignation;
         $user->details = $request->centralDetails;
         $user->email = $request->centralEmail;
         $user->mobile = $request->centralMobile;
@@ -142,13 +144,13 @@ class DepartmentCommitteeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
-        DepartmentCommittee::find($id)->delete();
+
+        DepartmentCommittee::find($request->id)->delete();
         return redirect()->route('backend.department-committee.list');
     }
 }

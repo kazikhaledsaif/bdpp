@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Add Notice</a>
+                <a href="{{ route('backend.notice.add') }}" class="btn btn-success">Add Notice</a>
             </div>
         </div>
         <!-- /.box-header -->
@@ -32,10 +32,10 @@
                 <tr>
                     <td>{{ $notice->id }}</td>
 
-                    <td>{{ $notice->title }}</td>
+                    <td> {{ str_limit($notice->title, $limit= 20, $end = ' ....') }}</td>
 
                     <td>{{ $notice->slug }}</td>
-                    <td>{!! $notice->description !!}  </td>
+                    <td>{!!  str_limit($notice->description, $limit= 20, $end = ' ....') !!}   </td>
                     <td>
                         @if ( $notice->file)
                            Yes
@@ -97,7 +97,7 @@
             e.preventDefault();
             var id = $(this).data('id');
             var token = $(this).data('token');
-            var name = $(this).data('name');
+
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -110,13 +110,13 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.notice.destroy') }}",
+                        url: "{{route('backend.notice.destroy')}}",
                         data: {id:id, _token:token},
                         success: function (data) {
                             if(data.success === true){ // if true (1)
                                 setTimeout(function(){  // wait for 5 secs(2)
                                     location.reload();  // then reload the page.(3)
-                                }, 500);
+                                }, 100);
                             }
                         }
                     });
@@ -129,6 +129,10 @@
                 }
             });
 
+        });
+
+        $(document).ajaxStop(function(){
+            window.location.reload();
         });
 
 

@@ -40,7 +40,12 @@
                                 <label for="inputTitle" class="col-sm-2 control-label">Designation</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text"  value=" {{ $central->designation }} " class="form-control" id="inputTitle" name="centralDesignation" placeholder="Designation" required>
+
+                                    <select  name="centralDesignation" class="form-control" id="desig" required >
+                                        @foreach($designations as $d)
+                                            <option value="{{ $d['id'] }}">{{ $d['title'] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -118,6 +123,8 @@
 
 @section('script')
     <script>
+
+        $("#desig").val({{$central->designation_id}});
 
 
         $(document).ready(function() {

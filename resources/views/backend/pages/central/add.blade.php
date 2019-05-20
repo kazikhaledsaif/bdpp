@@ -10,7 +10,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li class="active">New Central Committee</li>
+            <li class="active">Central Committee</li>
         </ol>
     </section>
 
@@ -37,7 +37,12 @@
                             <label for="inputTitle" class="col-sm-2 control-label">Designation</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputTitle" name="centralDesignation" placeholder="Designation" required>
+{{--                                <input type="text" name="centralDesignation" placeholder="Designation" required>--}}
+                                <select name="centralDesignation" class="form-control" id="inputTitle" required >
+                                    @foreach($designations as $d)
+                                        <option value="{{ $d['id'] }}">{{ $d['title'] }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

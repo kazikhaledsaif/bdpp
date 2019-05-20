@@ -49,7 +49,7 @@ class CentralCommitteeController extends Controller
 
         $user = new CentralCommitte();
         $user->name = $request->centralName;
-        $user->designation = $request->centralDesignation;
+        $user->designation_id = $request->centralDesignation;
         $user->details = $request->centralDetails;
         $user->email = $request->centralEmail;
         $user->mobile = $request->centralMobile;
@@ -64,9 +64,11 @@ class CentralCommitteeController extends Controller
     public function show($id)
     {
         //
+        $designation = Designation::all();
         $central = CentralCommitte::where('id',$id)->firstOrFail();
         return view('backend.pages.central.edit')->with([
-            'central' => $central
+            'central' => $central,
+            'designations' =>    $designation
         ]);
     }
 
@@ -83,7 +85,7 @@ class CentralCommitteeController extends Controller
 
         $user = CentralCommitte::find($request->id);
         $user->name = $request->centralName;
-        $user->designation = $request->centralDesignation;
+        $user->designation_id = $request->centralDesignation;
         $user->details = $request->centralDetails;
         $user->email = $request->centralEmail;
         $user->mobile = $request->centralMobile;
@@ -111,10 +113,10 @@ class CentralCommitteeController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
 
-        CentralCommitte::find($id)->delete();
+        CentralCommitte::find($request->id)->delete();
         return redirect()->route('backend.central-committee.list');
     }
 }

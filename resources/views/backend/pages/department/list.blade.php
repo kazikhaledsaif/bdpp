@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Add Department Committee</a>
+                <a href="{{ route('backend.department-committee.add') }}" class="btn btn-success">Add Department Committee</a>
             </div>
         </div>
         <!-- /.box-header -->
@@ -37,7 +37,7 @@
 
                     <td>{{ $committee->name }}</td>
 
-                    <td>{{ $committee->designation }}</td>
+                    <td>{{ $committee->designation->title }}</td>
                     <td>{{ $committee->department }}</td>
 
                     <td>{{ $committee->details }}  </td>
@@ -101,7 +101,7 @@
             e.preventDefault();
             var id = $(this).data('id');
             var token = $(this).data('token');
-            var name = $(this).data('name');
+
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -114,13 +114,13 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.department-committee.destroy') }}",
+                        url: "{{route('backend.department-committee.destroy')}}",
                         data: {id:id, _token:token},
                         success: function (data) {
                             if(data.success === true){ // if true (1)
                                 setTimeout(function(){  // wait for 5 secs(2)
                                     location.reload();  // then reload the page.(3)
-                                }, 500);
+                                }, 100);
                             }
                         }
                     });
@@ -133,6 +133,10 @@
                 }
             });
 
+        });
+
+        $(document).ajaxStop(function(){
+            window.location.reload();
         });
 
 

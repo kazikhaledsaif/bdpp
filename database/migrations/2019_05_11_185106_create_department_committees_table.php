@@ -17,7 +17,7 @@ class CreateDepartmentCommitteesTable extends Migration
             $table->bigIncrements('id');
             $table->text('name');
             $table->text('department');
-            $table->integer('designation');
+            $table->integer('designation_id');
             $table->text('details')->nullable();
             $table->string('email')->nullable();
             $table->text('mobile')->nullable();

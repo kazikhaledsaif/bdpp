@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Add Central Committee</a>
+                <a href="{{ route('backend.central-committee.add') }}" class="btn btn-success">Add Central Committee</a>
             </div>
         </div>
         <!-- /.box-header -->
@@ -36,7 +36,7 @@
 
                     <td>{{ $committee->name }}</td>
 
-                    <td>{{ $committee->designation }}</td>
+                    <td>{{ $committee->designation->title }}</td>
 
                     <td>{{ $committee->details }}  </td>
                     <td>{{ $committee->email }}</td>
@@ -98,11 +98,11 @@
             e.preventDefault();
             var id = $(this).data('id');
             var token = $(this).data('token');
-            var name = $(this).data('name');
+
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                type: 'Danger',
+                type: 'error',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -111,13 +111,13 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.central-committee.destroy') }}",
+                        url: "{{route('backend.central-committee.destroy')}}",
                         data: {id:id, _token:token},
                         success: function (data) {
                             if(data.success === true){ // if true (1)
                                 setTimeout(function(){  // wait for 5 secs(2)
                                     location.reload();  // then reload the page.(3)
-                                }, 500);
+                                }, 100);
                             }
                         }
                     });
@@ -130,6 +130,10 @@
                 }
             });
 
+        });
+
+        $(document).ajaxStop(function(){
+            window.location.reload();
         });
 
 

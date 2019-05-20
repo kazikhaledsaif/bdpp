@@ -10,8 +10,34 @@ use App\Http\Controllers\Controller;
 class GeneralMemberController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+
+
+    }
+    public function pdf($id) {
+        $member = GeneralMember::find($id);
+
+//        dd($member);
+
+        $pdf = PDF::loadView('frontend.pages.idCard', [
+            'member' => $member,
+        ]);
+
+        return $pdf->stream('invoice.pdf');
+    }
+
     public function index()
     {
+        $committee = GeneralMember::where('userId', auth()->user()->id)->get();
+
+        if($committee->isNotEmpty()) {
+
+            return redirect()->route('frontend.dashboard');
+        }
+
         $id = base_convert(time(), 10, 36);
 
 
@@ -115,7 +141,7 @@ class GeneralMemberController extends Controller
         $new->birthcert =$diploma;
 
         if ($new->save()) {
-            return redirect()->route('home');
+            return redirect()->route('frontend.dashboard');
         } else {
             return back();
         }

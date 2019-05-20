@@ -1,15 +1,16 @@
 @extends('frontend.theme.master')
 
-@section('title','District Committee')
+@section('title','Division Committee List')
 
 @section('content')
 
     <div class="container mt-5">
 
-        <h2 class="text-black text-center mb-3">District Committee</h2>
+        <h2 class="text-black text-center mb-3">{{$name}} কমিটি</h2>
 
 
         <div class="container-fluid">
+
             @foreach($keys as $key)
                 <div class="row">
                     <div class="col-12 mt-3">
@@ -31,7 +32,11 @@
                     </div>
                 </div>
             @endforeach
+
+
+
         </div>
+
 
     </div>
 

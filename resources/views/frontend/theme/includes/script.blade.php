@@ -15,7 +15,7 @@
 <script src="{{ asset('frontend/js/plugins/moment.min.js') }}./assets/js/plugins/moment.min.js"></script>
 <script src="{{ asset('frontend/js/plugins/bootstrap-datetimepicker.jss') }}" type="text/javascript"></script>
 <!-- Black Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{ asset('frontend/demo/demo.js') }}./assets/demo/demo.js"></script>
+{{--<script src="{{ asset('frontend/demo/demo.js') }}./assets/demo/demo.js"></script>--}}
 
 <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
 <script src="{{ asset('frontend/js/blk-design-system.min.js?v=1.0.0') }}" type="text/javascript"></script>

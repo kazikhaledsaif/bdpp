@@ -16,7 +16,7 @@ class CreateCentralCommittesTable extends Migration
         Schema::create('central_committes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('name');
-            $table->integer('designation');
+            $table->integer('designation_id');
             $table->text('details')->nullable();
             $table->string('email')->nullable();
             $table->text('mobile')->nullable();

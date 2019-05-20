@@ -60,6 +60,7 @@
                     <th>Payment status</th>
                     <th>Date</th>
                     <th>Action</th>
+                    <th>Payment</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,29 +68,38 @@
                 <tr>
                     <td>{{ $member->id }}</td>
 
-                    <td>{{ $member->name }}</td>
+                    <td> {{ str_limit($member->name, $limit= 20, $end = ' ....') }}</td>
                     <td>{{ $member->email }}</td>
 
                     <td>{{ $member->reference }}</td>
                     <td>{{ $member->payment_txid }}</td>
 
                         @if($member['payment_status'] == 'pending')
-                            <td class="badge badge-primary">{{ $member->payment_status }}</td>
+                            <td class="badge badge-primary " style=" background-color: yellow ; color: #000000; font-size: 15px"  > {{ $member->payment_status }}</td>
                         @elseif($member['payment_status'] == 'successful')
-                            <td class="badge badge-success">{{ $member->payment_status }}</td>
+                            <td class="badge badge-success " style="background-color: green ; color: #000000;font-size: 15px" >{{ $member->payment_status }}</td>
                         @elseif($member['payment_status'] == 'canceled')
-                            <td class="badge badge-danger">{{ $member->payment_status }}</td>
+                            <td class="badge badge-danger" style="background-color: red ; color: #000000;font-size: 15px" >{{ $member->payment_status }}</td>
                         @endif
 
                     <td>{{ date("d-m-Y", strtotime( $member->created_at))}}</td>
 
-                    <td>
-                  {{--      <a href="{{ route('frontend.notice.show',['id'=> $member->slug]) }}">
-                            <i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> --}}&nbsp;
+                    <td>&nbsp;&nbsp;&nbsp;
+                      <a href="{{ route('backend.general-member.edit',['id'=> $member->id]) }}">
+                            <i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a>&nbsp;&nbsp;
                         <a href="{{ route('backend.general-member.edit',['id'=> $member->id]) }}">
-                            <i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;
+                            <i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;&nbsp;
                         <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $member->id }}"
-                            data-name="{{ $member->name }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>
+                            data-name="{{ $member->name }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>&nbsp;
+                    </td>
+                    <td>
+
+                        <a  href="{{ route('backend.general-member.successful',['id'=> $member->id]) }}">
+                            <i class="fa fa-check fa-lg" style="color:green" aria-hidden="true"></i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <a href="{{ route('backend.general-member.canceled',['id'=> $member->id]) }}">
+                            <i class="fa fa-close fa-lg" style="color:red" aria-hidden="true"></i> </a>&nbsp;
+
                     </td>
 
                 </tr>
@@ -101,10 +111,12 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Payment status</th>
                     <th>Reference</th>
                     <th>Transaction ID</th>
+                    <th>Payment status</th>
+                    <th>Date</th>
                     <th>Action</th>
+                    <th>Payment</th>
                 </tr>
                 </tfoot>
             </table>
@@ -132,7 +144,7 @@
             e.preventDefault();
             var id = $(this).data('id');
             var token = $(this).data('token');
-            var name = $(this).data('name');
+
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -145,13 +157,13 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.notice.destroy') }}",
+                        url: "{{route('backend.general-member.destroy')}}",
                         data: {id:id, _token:token},
                         success: function (data) {
                             if(data.success === true){ // if true (1)
                                 setTimeout(function(){  // wait for 5 secs(2)
                                     location.reload();  // then reload the page.(3)
-                                }, 500);
+                                }, 100);
                             }
                         }
                     });
@@ -164,6 +176,10 @@
                 }
             });
 
+        });
+
+        $(document).ajaxStop(function(){
+            window.location.reload();
         });
 
 
