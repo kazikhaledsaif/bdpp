@@ -13,14 +13,16 @@ class GeneralMemberController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-
-
     }
+    public function pdf2(){
+
+        $pdf = PDF::loadView('frontend.pages.idCard');
+
+        return $pdf->stream('invoice.pdf');
+    }
+
     public function pdf($id) {
         $member = GeneralMember::find($id);
-
-//        dd($member);
 
         $pdf = PDF::loadView('frontend.pages.idCard', [
             'member' => $member,
@@ -155,14 +157,4 @@ class GeneralMemberController extends Controller
     }
 
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
-    }
 }

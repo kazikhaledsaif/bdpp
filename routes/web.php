@@ -110,7 +110,6 @@ Route::name('frontend.')
         Route::get('/district-committee', 'CommitteeController@districtCommittee')->name('districtCommittee.list');
         Route::get('/district-committee/{dist}', 'CommitteeController@districtShow')->name('districtCommittee.show');
 
-
         Route::get('/department-committee/{dpt}', 'CommitteeController@departmentShow')->name('departmentCommittee.show');
 
 
@@ -119,6 +118,11 @@ Route::name('frontend.')
 
 
         Route::get('/dashboard', 'IndexController@dashboard')->name('dashboard');
+
+        Route::get('/id', 'GeneralMemberController@pdf2')->name('id');
+
+        Route::get('/notices', 'NoticesController@index')->name('notice.list');
+        Route::get('/notices/{id}', 'NoticesController@show')->name('notice.show');
 
     });
 
