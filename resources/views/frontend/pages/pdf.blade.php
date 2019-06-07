@@ -32,10 +32,12 @@
             background: -webkit-linear-gradient(top,darkcyan,LightSteelBlue, #ddd);
 
         }
-        #holder .box img{
+
+        #img {
+
             width: 120px;
-            margin: 18px 0 0 0;
-            border:1px solid #eee;
+            margin: 0 0 0 0;
+            border: 1px solid #eee;
             border-radius: 2px;
             background-color:rgba(255,255,255,0.5);
             padding: 4px;
@@ -107,7 +109,7 @@
     <div class="box">
         <div class="tie"></div>
         <h1> বঙ্গবন্ধু ডিপ্লোমা প্রকৌশলী পরিষদ</h1>
-        <img src="https://pbs.twimg.com/profile_images/614461155860320256/LzpH25kK.jpg" alt="" />
+        <img id="img" src="https://pbs.twimg.com/profile_images/614461155860320256/LzpH25kK.jpg" alt="" />
         <h1 class="rname">মোঃ খবির হোসেন</h1>
         <h1 class="postitle">প্রতিষ্ঠাতা সভাপতি</h1>
         <h1 class="sig">Kaynam</h1>
