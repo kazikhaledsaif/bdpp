@@ -119,10 +119,12 @@ Route::name('frontend.')
 
         Route::get('/dashboard', 'IndexController@dashboard')->name('dashboard');
 
-        Route::get('/id', 'GeneralMemberController@pdf2')->name('id');
+//        Route::get('/id', 'GeneralMemberController@pdf2')->name('id');
 
         Route::get('/notices', 'NoticesController@index')->name('notice.list');
         Route::get('/notices/{id}', 'NoticesController@show')->name('notice.show');
+
+        Route::get('/pdf/{id}', 'GeneralMemberController@generatePdf')->name('pdf');
 
     });
 

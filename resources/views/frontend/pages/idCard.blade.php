@@ -8074,7 +8074,7 @@
 </style>
 
 <style>
-    body { font-family: 'SolaimanLipi', sans-serif; }
+    body { font-family: 'Bangla', sans-serif; }
     h5,p{
         margin: 0;
     }
@@ -8083,7 +8083,8 @@
     }
 </style>
 
-
+</head>
+<body>
 <div class="card " style="width: 350px; height: 200px; left: 500px; top: 200px; background-color: #edebca">
     <div class="card-header text-center">
         বঙ্গবন্ধু ডিপ্লোমা প্রকৌশলী পরিষদ
@@ -8094,7 +8095,7 @@
         </div>
 
         <div class="col-xs-8 pl-4">
-            <p style="font-size: 15px">মোঃ খবির হোসেন == {{ $member->id }}</p>
+            {{--     <p style="font-size: 15px">মোঃ খবির হোসেন == {{ $member->id }}</p>--}}
             <p  style="font-size: 10px; margin-bottom: 5px">প্রতিষ্ঠাতা সভাপতি </p>
 
             <p  style="font-size: 13px">মোবাইল: ০১৫৪৮৮৯৪৪৬</p>
@@ -8105,3 +8106,5 @@
 
 </div>
 
+
+</body>

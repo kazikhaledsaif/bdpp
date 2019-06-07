@@ -6,6 +6,7 @@ use App\CentralCommitte;
 use App\GeneralMember;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class GeneralMemberController extends Controller
 {
@@ -14,7 +15,7 @@ class GeneralMemberController extends Controller
     {
         $this->middleware('auth');
     }
-    public function pdf2(){
+   /* public function pdf2(){
 
         $pdf = PDF::loadView('frontend.pages.idCard');
 
@@ -29,7 +30,20 @@ class GeneralMemberController extends Controller
         ]);
 
         return $pdf->stream('invoice.pdf');
+    }*/
+
+
+
+    public function generatePdf($id) {
+
+
+        $member = GeneralMember::find($id);
+        $pdf = PDF::loadView('frontend.pages.pdf', $member);
+        return $pdf->stream('idCard.pdf');
     }
+
+
+
 
     public function index()
     {
