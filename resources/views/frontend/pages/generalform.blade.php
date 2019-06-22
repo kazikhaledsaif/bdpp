@@ -159,8 +159,8 @@
                             <input type="date" class="form-control" name="passing_year" class="datepicker" >
                         </td>
                         <td>
-                            <input type="radio" class="form-check-radio"  name="inst_type" value="সরকারি"> সরকারি
-                            <input type="radio" class="form-check-radio"  name="inst_type" value="বেসরকারি"> বেসরকারি
+                            <input type="radio" class="form-check-radio"  name="inst_type" value="সরকারি" required> সরকারি
+                            <input type="radio" class="form-check-radio"  name="inst_type" value="বেসরকারি" required> বেসরকারি
                         </td>
                     </tr>
                 </table>

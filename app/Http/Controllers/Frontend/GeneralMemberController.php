@@ -38,7 +38,10 @@ class GeneralMemberController extends Controller
 
 
         $member = GeneralMember::find($id);
-        $pdf = PDF::loadView('frontend.pages.pdf', $member);
+
+        $pdf = PDF::loadView('frontend.pages.pdf',[
+            'data' => $member,
+        ]);
         return $pdf->stream('idCard.pdf');
     }
 

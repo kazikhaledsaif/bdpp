@@ -3,10 +3,10 @@
 return [
     'mode'                  => 'utf-8',
     'format'                => 'A4',
-    'author'                => '',
+    'author'                => 'BDPP',
     'subject'               => '',
     'keywords'              => '',
-    'creator'               => 'Laravel Pdf',
+    'creator'               => ' Virtualechos.com',
     'display_mode'          => 'fullpage',
     'tempDir'               => base_path('../temp/') ,
     'font_path'             => base_path('resources/fonts/'),
