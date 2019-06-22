@@ -25,7 +25,10 @@ class IndexController extends Controller
     public function dashboard(){
 
 
-        $member = GeneralMember::find(auth()->user()->id);
+
+
+        $member = GeneralMember::where('userId', auth()->user()->id)->get();
+
         return view('frontend.pages.dashboard')->with([
             'keys' => $member
         ]);

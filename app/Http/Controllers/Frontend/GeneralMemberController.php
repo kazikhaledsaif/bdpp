@@ -36,8 +36,8 @@ class GeneralMemberController extends Controller
 
     public function generatePdf($id) {
 
-
         $member = GeneralMember::find($id);
+
 
         $pdf = PDF::loadView('frontend.pages.pdf',[
             'data' => $member,
