@@ -18,4 +18,5 @@ return [
     'register' => 'নিবন্ধন',
     'lang' => 'English',
     'locale' => 'en',
+    'notice' => 'নোটিশ',
 ];

@@ -14,7 +14,7 @@
 
     <h2 class="text-black">কেন্দ্রীয় কমিটি ফরম</h2>
 
-    <form action="{{ route('frontend.generalMember.store') }}" method="post" style="font-size: 120%;"
+    <form accept-charset="UTF-8" action="{{ route('frontend.generalMember.store') }}" method="post" style="font-size: 120%;"
           enctype="multipart/form-data">
         @csrf
         <div class="row">

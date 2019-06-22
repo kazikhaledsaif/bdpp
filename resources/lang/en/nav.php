@@ -19,4 +19,5 @@ return [
     'government' => 'Government ',
     'non-government' => 'Non Government ',
     'other' => 'Other ',
+    'notice' => 'Notice ',
 ];

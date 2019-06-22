@@ -21,7 +21,7 @@
             <!-- Horizontal Form -->
             <div class="box box-info">
                 <!-- form start -->
-                <form class="form-horizontal" action="{{ route('backend.notice.create') }}" method="post"
+                <form accept-charset="UTF-8" class="form-horizontal" action="{{ route('backend.notice.create') }}" method="post"
                       enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">

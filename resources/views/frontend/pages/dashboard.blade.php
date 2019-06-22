@@ -24,17 +24,18 @@
                     </div>
                     <div class="card-body p-2 mt-2 row">
                         <div class="col-5">
-                            <img class="p-1 border " src="{{ asset('frontend/img/user.jpg') }}" width="140" height="160" alt="Card image">
+                            <img class="p-1 border " src="{{ asset("uploads/".$keys->image)  }}" width="140" height="160" alt="Card image">
                         </div>
                         <div class="col-7">
 
-                            <h4 class="card-title">মোঃ খবির হোসেন</h4>
-                            <h6 class="card-title">প্রতিষ্ঠাতা সভাপতি </h6>
-                            <p class="card-text">প্রতিষ্ঠাতা সভাপতি </p>
+                            <h4 class="card-title">{{$keys->name}}</h4>
+                            <h6 class="card-text">সাধারণ সদস্য </h6>
+                            <p class="card-text">{{$keys->email}} </p>
+                            <p class="card-text">{{$keys->phone}} </p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Download</a>
+                        <a href="{{ route('frontend.pdf',['id'=> $keys->id]) }}" class="btn btn-primary">Download</a>
                     </div>
                 </div>
             </div>

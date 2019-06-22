@@ -10,8 +10,14 @@ body{
 	color: #307a15!important;
 }
 
+
+.card-log,
+.card-log label{
+	color: #000;
+}
+
 .bg-green {
-  background-color: #03856C !important;
+	background-color: #03856C !important;
 }
 .bg-menu-image{
 	background-color: #f3ef85 !important;
@@ -26,7 +32,7 @@ body{
 a.nav-link{
 	color: black!important;
 	font-size: 1.2em;
-	padding:   10px;
+	padding: 10px;
 	border: 1px solid transparent;
 	border-radius: 5px;
 }
@@ -38,7 +44,7 @@ a.bg-green:hover,
 a.bg-green:focus,
 button.bg-green:hover,
 button.bg-green:focus {
-  background-color: #03856C !important;
+	background-color: #03856C !important;
 }
 
 .text-black{
@@ -53,34 +59,34 @@ button.bg-green:focus {
 	font-size: 1.1rem;
 }
 
- .chairman{
- 	background: #E2DFDF;
+.chairman{
+	background: #E2DFDF;
 	padding: 10px;
-	padding-left: 20px; 	
- }
-  .chairman h3{
-  	margin-bottom: 10px;
-  }
- .chairman h3,
- .chairman h4,
- .chairman h5{
- 	color: black;
- }
+	padding-left: 20px;
+}
+.chairman h3{
+	margin-bottom: 10px;
+}
+.chairman h3,
+.chairman h4,
+.chairman h5{
+	color: black;
+}
 
 .front-notice ul li{
 	list-style-type: square;
 	line-height: 2;
 }
-.front-notice   li a{
+.front-notice li a{
 	color: #212529;
 }
-.front-notice   li a:hover{
+.front-notice li a:hover{
 	color: #FDFDFD;
 	text-decoration: underline;
 }
 
 .notice-board{
-	 	background: #03856C;
+	background: #03856C;
 }
 
 
@@ -101,8 +107,8 @@ button.bg-green:focus {
 }
 .blockquote.blockquote-secondary {
 	border: none;
-  border-left: 5px solid #03856C;
-  color: black;
+	border-left: 5px solid #03856C;
+	color: black;
 }
 
 

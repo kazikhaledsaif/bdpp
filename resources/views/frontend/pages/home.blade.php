@@ -72,11 +72,13 @@
 
                 <ul>
                     @foreach($keys as $key)
-                    <li><a href="">{{$key->title}}</a></li>
+                    <li><a href="{{ route('frontend.notice.show',['id'=> $key->id]) }}">{{$key->title}}</a></li>
 
                     @endforeach
                 </ul>
-
+                <div class="float-right">
+                    <a href="{{ route('frontend.notice.list')}}" class="btn btn-success">{{ __('home.seemore') }}</a>
+                </div>
             </div>
 
             <div class="col-md-3 chairman ">
@@ -88,9 +90,9 @@
 
                 <div class="row pb-3">
                     <ul>
-                        <li><a href="#">{{ __('home.link1') }}</a> </li>
+                    {{--    <li><a href="#">{{ __('home.link1') }}</a> </li>
                         <li><a href="#">{{ __('home.link2') }}</a> </li>
-                        <li><a href="#">{{ __('home.link3') }}</a> </li>
+                        <li><a href="#">{{ __('home.link3') }}</a> </li>--}}
 
                     </ul>
                 </div>

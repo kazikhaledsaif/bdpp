@@ -23,7 +23,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <!-- form start -->
-                    <form class="form-horizontal" action="{{ route('backend.central-committee.update') }}" method="post"
+                    <form accept-charset="UTF-8" class="form-horizontal" action="{{ route('backend.central-committee.update') }}" method="post"
                           enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" class="form-control"  name="id" value="{{ $central->id }}" >

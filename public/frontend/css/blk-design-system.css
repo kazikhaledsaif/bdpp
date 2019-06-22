@@ -5055,9 +5055,9 @@ input[type="button"].btn-block {
   padding: 0 0.6875rem;
   margin-left: -0.0625rem;
   line-height: 1.25;
-  color: #ffffff;
+  color: #000000;
   background-color: transparent;
-  border: 0.0625rem solid #e3e3e3;
+  border: 0.0625rem solid #000000;
 }
 
 .page-link:hover {
@@ -5092,8 +5092,10 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #ffffff;
-  background-color: #e14eca;
-  border-color: #e14eca;
+
+
+  background-color: black;
+  border-color: black;
 }
 
 .page-item.disabled .page-link {

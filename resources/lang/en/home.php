@@ -20,4 +20,5 @@ return [
     'link2' => 'Central Committee Form',
     'link3' => 'Departmental Committee',
     'locale' => 'en',
+    'seemore' => 'See more',
 ];

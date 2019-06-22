@@ -35,7 +35,7 @@
                 <div class="box box-info">
                     <!-- form start -->
 
-                    <form class="form-horizontal" action="{{ route('backend.general-member.update') }}" method="post" style="font-size: 120%;"
+                    <form accept-charset="UTF-8" class="form-horizontal" action="{{ route('backend.general-member.update') }}" method="post" style="font-size: 120%;"
                           enctype="multipart/form-data">
                         @csrf
                         <div class="box-body">

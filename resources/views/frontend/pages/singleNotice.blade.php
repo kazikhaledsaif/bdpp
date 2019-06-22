@@ -10,16 +10,15 @@
     <div class="container about-story mt-4 mb-4">
         <div class="row">
 
-            <div class="col-lg-10">
+            <div class="col-lg-12 text-center">
 
                 <!-- Title -->
-                <h1 class="mt-3 mb-0 text-black">{{ $notice->title }}</h1>
+                <h1 class="mt-3 mb-0 text-black text-center">{{ $notice->title }}</h1>
 
-                <hr>
+                <hr style="height:1px;">
                 <!-- Date/Time -->
                 <p>Posted on {{ $notice->updated_at }}</p>
-                <hr>
-
+                <hr style="height:1px;">
 
                 <!-- Post Content -->
                 <p class="lead">

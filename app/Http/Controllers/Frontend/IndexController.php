@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\GeneralMember;
 use App\Notice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,7 +24,11 @@ class IndexController extends Controller
 
     public function dashboard(){
 
-        return view('frontend.pages.dashboard');
+
+        $member = GeneralMember::find(auth()->user()->id);
+        return view('frontend.pages.dashboard')->with([
+            'keys' => $member
+        ]);
 
     }
 
